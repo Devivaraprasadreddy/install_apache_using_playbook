@@ -1,0 +1,18 @@
+---
+- hosts: awsmanaged-host
+  tasks:
+    - name: Install apache2
+      apt:
+        name: apache2
+        state: present
+    - name: configure the apache web server
+      service:
+        name: apache2
+        state: started
+        enabled: yes
+    - name: copy the index.html
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+
+
